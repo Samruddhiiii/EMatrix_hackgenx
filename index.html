@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanarakshak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+     <img src="images/logo.jpg" alt="Vanarakshak logo">
+    
+    </div>
+    <nav>
+        <a href="#" class="active">Home</a>
+        <a href="dashboard.html" target="_blank">Dashboard</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      
+    <a href="#signup" class="signup-btn">Sign Up</a>
+  </header>
+
+  <section class="hero">
+    <h1>Vanarakshak</h1>
+    <p>एक कदम वनरक्षा की और</p>
+    <div class="description">Let's detect deforestation and wildlife poaching with satellites and AI</div>
+    <button class="dashboard-btn" onclick="window.open('dashboard.html', '_blank')">Go to Dashboard</button>
+  </section>
+
+  <section class="satellite-section">
+    <h2>Here are some satellite images of forest regions across India.</h2>
+    <div class="slider-container">
+      <div class="slider-track">
+        <div>
+        <img src="images/satellite1.jpg" alt="Satellite Image 1"
+        style="width: 350px; height: 300px;">
+        <h2>Madhya Pradesh</h2>
+        </div>
+        <div>
+        <img src="images/satellite2.jpg" alt="Satellite Image 2"
+        style="width: 350px; height: 300px;">
+        <h2>Arunachal Pradesh</h2>
+        </div>
+        <div>
+        <img src="images/satellite3.jpg" alt="Satellite Image 3"
+        style="width: 350px; height: 300px;">
+        <h2>Maharashtra</h2>
+        </div>
+        <div>
+        <img src="images/satellite4.jpg" alt="Satellite Image 4"
+        style="width: 350px; height: 300px;">
+        <h2>Assam</h2>
+        </div>
+        <div>
+        <img src="images/satellite5.jpg" alt="Satellite Image 5"
+            style="width: 350px; height: 300px;">
+          <h2>Meghalaya</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="use-cases-section">
+    <h2>Use Cases</h2>
+    <div class="use-cases">
+      <div class="use-case">
+        <h3>Deforestation Detection</h3>
+        <p>Monitor forest cover in real time using satellite data and AI to detect illegal logging and degradation.</p>
+      </div>
+      <div class="use-case">
+        <h3>Wildlife Poaching Detection</h3>
+        <p>Identify and prevent poaching incidents with AI pattern recognition from satellite thermal and movement data.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Vanarakshak</strong><br>
+    An initiative to protect forests and wildlife using AI and satellite technology.<br>
+    &copy; 2025 Vanarakshak. All rights reserved.
+  </footer>
+</body>
+</html>

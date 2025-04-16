@@ -1,0 +1,278 @@
+
+@font-face {
+  font-family: 'VanarakshakFont';
+  src: url('vanarakshak-font.ttf') format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 100, 0, 0.7)), url('https://img.freepik.com/premium-photo/picture-animals-forest-with-sun-trees_1315312-94799.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  perspective: 1000px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(0, 100, 0, 0.7);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  transform: rotateY(10deg);
+  transition: transform 0.5s ease;
+}
+
+.logo:hover {
+  transform: rotateY(0deg);
+}
+
+.logo img {
+  height: 150px;
+  width: 200px;
+  margin-right: 1px;
+  filter: drop-shadow(2px 2px 5px #000);
+  border-radius: 10px;
+}
+
+.logo span {
+  font-size: 1.8em;
+  font-weight: bold;
+  font-family: 'VanarakshakFont', sans-serif;
+  text-shadow: 2px 2px 4px #000;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a.active,
+nav a:hover {
+  color: #00ff99;
+}
+
+.signup-btn {
+  background: #fff;
+  color: green;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.hero {
+  text-align: center;
+  padding: 180px 20px 60px;
+  background: rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+}
+
+.hero h1 {
+  font-size: 5em;
+  margin-bottom: 0.2em;
+  font-family: 'VanarakshakFont', sans-serif;
+  animation: pop-in 1.5s ease-out;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.5) rotateX(90deg); opacity: 0; }
+  100% { transform: scale(1) rotateX(0); opacity: 1; }
+}
+
+.hero p {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+.description {
+  font-size: 1.2em;
+  margin-top: 10px;
+  animation: fade-in 2s ease-in;
+}
+
+.dashboard-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.satellite-section {
+  background: rgba(0, 50, 0, 0.85);
+  padding: 60px 20px;
+  text-align: center;
+  transform: translateZ(50px);
+}
+
+.satellite-section h2 {
+  margin-bottom: 30px;
+  animation: pop-in 1s ease-in-out;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: auto;
+}
+
+.slider-track {
+  display: flex;
+  width: calc(600px * 10);
+  animation: smooth-slide 4s linear infinite;
+}
+
+.slider-track img {
+  width: 600px;
+  height: auto;
+  margin-right: 10px;
+  margin-left: 10px;
+  top: 2px;
+  border-radius: 10px;
+  transition: transform 0.5s;
+}
+
+.slider-track img:hover {
+  transform: scale(1.05);
+
+}
+
+@keyframes smooth-slide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.use-cases-section {
+  background: #012d01;
+  padding: 60px 20px;
+  text-align: center;
+  color: #e5ffe5;
+}
+
+.use-cases-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  font-family: 'VanarakshakFont', sans-serif;
+}
+
+.use-cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.use-case {
+  background: #024d02;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
+}
+
+.use-case:hover {
+  transform: translateY(-5px);
+}
+
+.use-case h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.use-case p {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+footer {
+  background: #003300;
+  color: #ddd;
+  padding: 40px;
+  text-align: center;
+}
+
+footer strong {
+  font-family: 'VanarakshakFont', sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 3em;
+  }
+
+  .hero p, .description {
+    font-size: 1.2em;
+  }
+
+  .satellite-section h2 {
+    font-size: 1.8em;
+  }
+
+  .slider-track img {
+    width: 90%;
+  }
+}
+.dashboard-section {
+    background: #013301;
+    padding: 60px 20px;
+    text-align: center;
+    color: #e5ffe5;
+  }
+  
+  .dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  
+  .dashboard-card {
+    background: #024d02;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    max-width: 300px;
+  }
+  
+  .dashboard-card button {
+    background-color: #00cc66;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
