@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Vanarakshak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 100, 0, 0.7)), url('https://img.freepik.com/premium-photo/picture-animals-forest-with-sun-trees_1315312-94799.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      background: rgba(0, 100, 0, 0.7);
+      padding: 20px 50px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    strong{
+      align-content: center;
+      align-items: center;
+    }
+
+    .logo span {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover, nav a.active {
+      color: #00ff99;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      background: rgba(0, 50, 0, 0.85);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .contact-info {
+      margin-bottom: 40px;
+      line-height: 1.8;
+      font-size: 1.1em;
+    }
+
+    .contact-info strong {
+      display: block;
+      margin-top: 20px;
+      color: #90ee90;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background: #eee;
+      color: #333;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      padding: 12px;
+      background-color: #00cc66;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00a65a;
+    }
+
+    footer {
+      background: #003300;
+      color: #ddd;
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .container {
+        margin: 40px 20px;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span>Vanarakshak</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <div class="contact-info">
+        <strong>Email:</strong>
+        contact@vanarakshak.org
+        <strong>Phone:</strong>
+        +91 98765 43210
+
+      <strong>Address:</strong>
+      Vanarakshak HQ, 2nd Floor, GreenTech Complex,<br />
+      Forest Lane, Nagpur, Maharashtra - 440001, India
+
+      <strong>Follow Us:</strong>
+      Instagram: @vanarakshak<br />
+      Twitter: @vanarakshak_in<br />
+      LinkedIn: Vanarakshak Initiative
+    </div>
+
+  </div>
+
+  <footer>
+    <strong>Vanarakshak</strong><br>
+    An initiative to protect forests and wildlife using AI and satellite technology.<br>
+    &copy; 2025 Vanarakshak. All rights reserved.
+  </footer>
+</body>
+</html>
