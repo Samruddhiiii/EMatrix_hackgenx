@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Vanarakshak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'VanarakshakFont';
+      src: url('vanarakshak-font.ttf') format('truetype');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 100, 0, 0.7)), url('https://img.freepik.com/premium-photo/picture-animals-forest-with-sun-trees_1315312-94799.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 100, 0, 0.7);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 60px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 1.8em;
+      font-weight: bold;
+      font-family: 'VanarakshakFont', sans-serif;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: #00ff99;
+    }
+
+    .login-btn {
+      background: #f7f4f4;
+      color: rgb(9, 137, 9);
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .about-container {
+      padding: 160px 40px 60px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-container h1 {
+      font-family: 'VanarakshakFont', sans-serif;
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+
+    .about-container h2 {
+      color: #90ee90;
+      font-size: 2em;
+      margin-top: 40px;
+    }
+
+    .about-container p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #003300;
+      color: #ddd;
+      padding: 40px;
+      text-align: center;
+    }
+
+    footer strong {
+      font-family: 'VanarakshakFont', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Vanarakshak Logo">
+      <span>Vanarakshak</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="l (1).html" class="login-btn">Login</a>
+  </header>
+
+  <div class="about-container">
+    <h1>About Vanarakshak</h1>
+
+    <h2>Our Mission</h2>
+    <p>
+      To leverage the power of Artificial Intelligence and satellite imagery to monitor, detect, and prevent deforestation and wildlife poaching across India’s forest landscapes, ensuring sustainable conservation for future generations.
+    </p>
+
+    <h2>Our Vision</h2>
+    <p>
+      A future where technology and nature coexist, where every tree and every wild animal is protected by a vigilant, intelligent guardian from above—Vanarakshak.
+    </p>
+  </div>
+
+  <footer>
+    <strong>Vanarakshak</strong><br>
+    An initiative to protect forests and wildlife using AI and satellite technology.<br>
+    &copy; 2025 Vanarakshak. All rights reserved.
+  </footer>
+</body>
+</html>

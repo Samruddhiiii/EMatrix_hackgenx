@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Login/Signup Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #7b2ff7, #f107a3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      height: 600px;
+      background-color: #0f1020;
+      border-radius: 20px;
+      display: flex;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+
+    .form-section {
+      width: 40%;
+      padding: 40px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #1c1d3b;
+    }
+
+    .form-section h2 {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-section input {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+    }
+
+    .form-section button {
+      background-color: #ff0f8a;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .forgot-password {
+      text-align: right;
+      font-size: 0.85rem;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    .forgot-password a {
+      color: #38a1f2;
+      text-decoration: none;
+    }
+
+    .form-section .toggle {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .form-section .toggle a {
+      color: #38a1f2;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .welcome-section {
+      width: 60%;
+      background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?fit=crop&w=1000&q=80') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .welcome-section h1 {
+      font-size: 3rem;
+    }
+
+    .welcome-section p {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .form-section, .welcome-section {
+        width: 100%;
+        height: auto;
+      }
+
+      .forgot-password {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-section" id="form-section">
+      <h2 id="form-title">Login</h2>
+      <input type="text" placeholder="Username" id="username" />
+      <input type="password" placeholder="Password" id="password" />
+      <div class="forgot-password" id="forgot-password">
+        <a href="#">Forgot Password?</a>
+      </div>
+      <input type="email" placeholder="Email" id="email" style="display:none;" />
+      <button onclick="handleSubmit()" id="submit-btn">Login</button>
+      <div class="toggle">
+        <span id="toggle-text">Not a member?</span>
+        <a onclick="toggleForm()" id="toggle-link">Sign up now</a>
+      </div>
+    </div>
+    <div class="welcome-section">
+      <h1>Welcome.</h1>
+      <p>Track wildlife & prevent deforestation with our smart monitoring system.</p>
+    </div>
+  </div>
+
+  <script>
+    let isLogin = true;
+
+    function toggleForm() {
+      const emailField = document.getElementById('email');
+      const title = document.getElementById('form-title');
+      const submitBtn = document.getElementById('submit-btn');
+      const toggleText = document.getElementById('toggle-text');
+      const toggleLink = document.getElementById('toggle-link');
+      const forgotPassword = document.getElementById('forgot-password');
+
+      if (isLogin) {
+        emailField.style.display = 'block';
+        title.innerText = 'Sign Up';
+        submitBtn.innerText = 'Sign Up';
+        toggleText.innerText = 'Already have an account?';
+        toggleLink.innerText = 'Login here';
+        forgotPassword.style.display = 'none';
+      } else {
+        emailField.style.display = 'none';
+        title.innerText = 'Login';
+        submitBtn.innerText = 'Login';
+        toggleText.innerText = 'Not a member?';
+        toggleLink.innerText = 'Sign up now';
+        forgotPassword.style.display = 'block';
+      }
+
+      isLogin = !isLogin;
+    }
+
+    function validateEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+      return re.test(String(email).toLowerCase());
+    }
+
+    function handleSubmit() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (!username || !password || (!isLogin && !email)) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      if (!isLogin && !validateEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      if (isLogin) {
+        alert(`Welcome back, ${username}!`);
+      } else {
+        alert(`Account created for ${username}!`);
+      }
+    }
+  </script>
+</body>
+</html>
