@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis Result | Vanarakshak</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card { 
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: none;
+        }
+        .card-header {
+            background-color: #115E0A;
+            color: white;
+            font-weight: 600;
+        }
+        .chart-img { 
+            width: 100%; 
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-download { 
+            margin-right: 10px;
+            background-color: #3FB344;
+            border: none;
+        }
+        .btn-download:hover {
+            background-color: #2A8E31;
+        }
+        h1 {
+            color: #053B06;
+            font-weight: bold;
+        }
+        .text-muted {
+            color: #666 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+    <h1 class="text-center mb-4">🌿 Deforestation Analysis Result</h1>
+    <h5 class="text-center text-muted">Area: {{ area }}</h5>
+
+    <!-- Map -->
+    <div class="card">
+        <div class="card-header">📍 Location Map</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='analysis_output/location_map.png') }}" alt="Location Map" class="chart-img">
+        </div>
+    </div>
+
+    <!-- NDVI Graph -->
+    <div class="card">
+        <div class="card-header">📈 NDVI Change Over Time</div>
+        <div class="card-body">
+            <canvas id="ndviChart" height="100"></canvas>
+        </div>
+    </div>
+
+    <!-- Deforestation Risk Map -->
+    <div class="card">
+        <div class="card-header">🗺️ Deforestation Risk Map</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='analysis_output/deforestation_risk_map.png') }}" alt="Risk Map" class="chart-img">
+            <h5 class="mt-3">Risk Index: {{ risk }}</h5>
+        </div>
+    </div>
+
+    <!-- Vegetation Coverage Pie Chart -->
+    <div class="card">
+        <div class="card-header">🥧 Vegetation Coverage</div>
+        <div class="card-body text-center">
+            <img src="{{ url_for('static', filename='analysis_output/vegetation_pie.png') }}" alt="Vegetation Pie Chart" class="chart-img mb-3">
+            <h5>Vegetation Coverage: {{ vegetation }}%</h5>
+        </div>
+    </div>
+
+    <!-- Report & Send Buttons -->
+    <div class="text-center my-4">
+        <a href="{{ url_for('static', filename='analysis_output/final_report.txt') }}" class="btn btn-success btn-download">📄 Download Report</a>
+        <button class="btn btn-primary" onclick="sendReport()">📤 Send Report</button>
+        <a href="/" class="btn btn-secondary">🔄 New Analysis</a>
+    </div>
+</div>
+<canvas id="ndviChart" height="100"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart Script -->
+<script type="text/javascript">
+    const ndviLabels = JSON.parse('{{ dates|tojson|safe }}');
+    const ndviData = JSON.parse('{{ ndvi_means|tojson|safe }}');
+
+    console.log(ndviLabels, ndviData);
+
+    const ctx = document.getElementById('ndviChart').getContext('2d');
+    const ndviChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ndviLabels,
+            datasets: [{
+                label: 'NDVI Index',
+                data: ndviData,
+                fill: false,
+                borderColor: 'green',
+                backgroundColor: 'rgba(75, 192, 75, 0.2)',
+                borderWidth: 2,
+                tension: 0.3,
+                pointBackgroundColor: 'green',
+                pointRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'NDVI Changes Over Analysis Period'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 1,
+                    title: {
+                        display: true,
+                        text: 'NDVI Value'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

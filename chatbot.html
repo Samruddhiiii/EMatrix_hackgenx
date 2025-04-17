@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Chatbot | Vanarakshak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="chatbots.css" />
+  <style>
+    @font-face {
+      font-family: 'VanarakshakFont';
+      src: url('vanarakshak-font.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 100, 0, 0.7)), url('https://img.freepik.com/premium-photo/picture-animals-forest-with-sun-trees_1315312-94799.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'VanarakshakFont', sans-serif;
+      font-size: 3em;
+      text-shadow: 2px 2px 5px #000;
+      margin-bottom: 20px;
+    }
+
+    .chat-container {
+      background: rgba(0, 60, 0, 0.8);
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0, 255, 100, 0.3);
+    }
+
+    .chat-box {
+      height: 300px;
+      overflow-y: auto;
+      color: #000;
+      background: #eaedea;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 0.95em;
+    }
+
+    #chat-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    #user-input {
+      flex: 1;
+      color: #000;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ask Me Anything!</h1>
+
+  <div class="chat-container">
+    <div class="chat-box" id="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type a message..." />
+      <input type="file" id="image-input" accept="image/*" style="display: none;" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="chatbot.js"></script>
+</body>
+</html>

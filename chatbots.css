@@ -1,0 +1,116 @@
+/* Reset some defaults */
+body, h1, h2, h3, p, ul, li, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #a8e6cf, #dcedc1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  h2{
+    color: #66bb6a;
+  }
+  /* Main Chat Container */
+  .chat-container {
+    background-color: #ffffff;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    border: 4px solid #81c784;
+  }
+  
+  /* Chat Display Box */
+  .chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), #e8f5e9;
+    background-blend-mode: overlay;
+    scroll-behavior: smooth;
+  }
+  
+  .chat-box p {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    background-color: #c8e6c9;
+    border-radius: 12px;
+    width: fit-content;
+    max-width: 80%;
+    word-wrap: break-word;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* User Messages */
+  .chat-box .user {
+    background-color: #aed581;
+    align-self: flex-end;
+  }
+  
+  /* Bot Messages */
+  .chat-box .bot {
+    background-color: #dcedc1;
+    align-self: flex-start;
+  }
+  
+  /* Chat Input Area */
+  #chat-form {
+    display: flex;
+    padding: 10px;
+    background-color: #f1f8e9;
+    border-top: 2px solid #c5e1a5;
+  }
+  
+  #user-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 2px solid #aed581;
+    border-radius: 12px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  #user-input:focus {
+    border-color: #81c784;
+  }
+  
+  /* Send Button */
+  button[type="submit"] {
+    background-color: #81c784;
+    border: none;
+    padding: 10px 16px;
+    margin-left: 8px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #66bb6a;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

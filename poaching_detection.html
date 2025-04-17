@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poaching Detection</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(#014401, #001f00);
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    video, img#annotated {
+      width: 640px;
+      height: 480px;
+      border: 5px solid #00cc66;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+    .button {
+      padding: 15px 30px;
+      background-color: #00cc66;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #00a555;
+    }
+    #result {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    #snapshot {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Wildlife Poaching Detection</h1>
+
+  <!-- live webcam feed -->
+  <video id="webcam" autoplay></video><br>
+  <button class="button" id="scanBtn">Scan to Detect Poaching Activity</button>
+
+  <!-- display annotated result -->
+  <img id="annotated" style="display:none;" alt="Detection Result"><br>
+  <div id="result"></div>
+
+  <canvas id="snapshot" width="640" height="480"></canvas>
+
+  <script>
+    const video = document.getElementById('webcam');
+    const canvas = document.getElementById('snapshot');
+    const annotated = document.getElementById('annotated');
+    const resultDiv = document.getElementById('result');
+    const scanBtn = document.getElementById('scanBtn');
+    const ctx = canvas.getContext('2d');
+
+    // start webcam on page load
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => { video.srcObject = stream; })
+      .catch(err => alert('Webcam error: ' + err.message));
+
+    scanBtn.addEventListener('click', async () => {
+      scanBtn.disabled = true;
+      scanBtn.innerText = 'Capturing...';
+
+      // capture frame
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+
+      scanBtn.innerText = 'Processing...';
+      try {
+        const resp = await fetch('http://127.0.0.1:5500/detect', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image: dataUrl })
+        });
+        if (!resp.ok) throw new Error(`Server error: ${resp.status}`);
+
+        // if server returns annotated image as base64
+        const contentType = resp.headers.get('Content-Type');
+        if (contentType && contentType.includes('application/json')) {
+          const data = await resp.json();
+          resultDiv.innerText = data.message || '';
+          if (data.annotated_image) {
+            annotated.src = data.annotated_image;
+            annotated.style.display = 'block';
+          }
+          if (data.status === 'alert') alert('⚠️ ' + data.message);
+        } else {
+          // fallback: blob image
+          const blob = await resp.blob();
+          const url = URL.createObjectURL(blob);
+          annotated.src = url;
+          annotated.style.display = 'block';
+          resultDiv.innerText = 'Detection complete';
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      } finally {
+        scanBtn.disabled = false;
+        scanBtn.innerText = 'Scan to Detect Poaching Activity';
+      }
+    });
+  </script>
+</body>
+</html>
